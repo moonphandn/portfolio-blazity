@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Phan — AI Content & Marketing Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg:       #0C0F14;
+    --surface:  #141920;
+    --card:     #1A2233;
+    --border:   #242D3D;
+    --accent:   #3B82F6;
+    --accent2:  #60A5FA;
+    --green:    #34D399;
+    --amber:    #FBBF24;
+    --text:     #E8EDF5;
+    --muted:    #8B95A8;
+    --mono:     'JetBrains Mono', monospace;
+    --sans:     'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(12,15,20,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name { font-family: var(--mono); font-size: 13px; color: var(--accent2); letter-spacing: .04em; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+  section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+
+  /* ── HERO ── */
+  #hero { padding: 96px 0 80px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 20px; padding: 5px 14px;
+    font-family: var(--mono); font-size: 11px; color: var(--accent2);
+    margin-bottom: 28px; letter-spacing: .05em;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.12; letter-spacing: -.02em; margin-bottom: 20px; }
+  h1 .highlight { color: var(--accent); }
+  .hero-sub { font-size: 17px; color: var(--muted); max-width: 580px; line-height: 1.7; margin-bottom: 36px; }
+  .hero-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .hero-meta span { color: var(--text); }
+
+  /* ── METRICS ── */
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .metric-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 22px 20px;
+  }
+  .metric-value { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 6px; }
+  .metric-value.accent { color: var(--accent); }
+  .metric-value.green { color: var(--green); }
+  .metric-value.amber { color: var(--amber); }
+  .metric-label { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  /* ── SECTION HEADERS ── */
+  .section-label { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+  h2 { font-size: 26px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+  .section-desc { color: var(--muted); font-size: 14px; max-width: 540px; margin-bottom: 36px; }
+
+  /* ── CASE STUDIES ── */
+  .case-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px; margin-bottom: 20px;
+    transition: border-color .2s;
+  }
+  .case-card:hover { border-color: rgba(59,130,246,0.4); }
+  .case-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+  .case-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .08em;
+    padding: 4px 10px; border-radius: 4px; font-weight: 500;
+  }
+  .tag-blue { background: rgba(59,130,246,0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52,211,153,0.12); color: var(--green); }
+  .tag-amber { background: rgba(251,191,36,0.12); color: var(--amber); }
+  h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; line-height: 1.3; }
+  .case-desc { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+
+  .case-results { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+  .result-pill {
+    background: rgba(20,25,32,0.8); border: 1px solid var(--border);
+    border-radius: 6px; padding: 7px 14px;
+    font-size: 12px; color: var(--text);
+  }
+  .result-pill strong { color: var(--accent2); }
+
+  .case-caps { display: flex; flex-wrap: wrap; gap: 7px; }
+  .cap { background: var(--surface); border-radius: 4px; padding: 3px 10px; font-size: 11px; color: var(--muted); font-family: var(--mono); }
+
+  /* ── FLYWHEEL VISUAL ── */
+  .flywheel-wrap {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 28px; margin: 24px 0;
+  }
+  .flywheel-label { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+  .flywheel-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 0; }
+  .fw-step {
+    display: flex; align-items: center; gap: 0;
+  }
+  .fw-node {
+    background: var(--card); border: 1px solid var(--border); border-radius: 7px;
+    padding: 7px 13px; font-size: 11px; font-family: var(--mono);
+    color: var(--text); white-space: nowrap;
+  }
+  .fw-node.active { border-color: var(--accent); color: var(--accent2); background: rgba(59,130,246,0.07); }
+  .fw-arrow { color: var(--border); font-size: 14px; padding: 0 5px; }
+  .flywheel-outcome {
+    margin-top: 16px; display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .outcome-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+  .outcome-item::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+  /* ── TOOLS ── */
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tool-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .tool-category { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: .08em; margin-bottom: 10px; }
+  .tool-list { font-size: 13px; color: var(--muted); line-height: 2; }
+  .tool-list strong { color: var(--text); font-weight: 500; }
+
+  /* ── WHAT I DO ── */
+  .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .role-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+  }
+  .role-icon { font-size: 22px; margin-bottom: 12px; }
+  .role-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+  .role-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── QUOTE ── */
+  .quote-block {
+    border-left: 3px solid var(--accent); padding: 20px 24px;
+    background: rgba(59,130,246,0.05); border-radius: 0 8px 8px 0;
+    margin: 32px 0;
+  }
+  .quote-text { font-size: 16px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 10px; }
+  .quote-attr { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  #contact { text-align: center; padding: 80px 0; }
+  .contact-email { font-size: 20px; color: var(--accent2); text-decoration: none; font-weight: 500; }
+  .contact-meta { margin-top: 12px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  .divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+  @media (max-width: 680px) {
+    .metrics-grid { grid-template-columns: repeat(2,1fr); }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    .role-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">moon-phan.portfolio</span>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      AVAILABLE · Warsaw, Poland · EU Permanent Resident
+    </div>
+    <h1>
+      AI Content &amp; Marketing Specialist<br>
+      who <span class="highlight">builds the systems</span>,<br>
+      not just the content.
+    </h1>
+    <p class="hero-sub">
+      I design AI-native content workflows that run at scale — turning one idea into a multi-channel content operation with 60%+ less production time. Then I write the stories that make people stop, read, and act.
+    </p>
+    <div class="hero-meta">
+      <span>Moon Phan</span> &nbsp;·&nbsp; thunguyetphan@gmail.com &nbsp;·&nbsp; <span>linkedin.com/in/moonphan</span> &nbsp;·&nbsp; <span>moon-phan-ygo8exa.gamma.site</span>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section>
+  <div class="container">
+    <div class="section-label">By the numbers</div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value green">60%+</div>
+        <div class="metric-label">Production time saved through AI-assisted workflow design</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value accent">4,500+</div>
+        <div class="metric-label">Organic users on a new AI voice product in 56 days</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value amber">#1</div>
+        <div class="metric-label">Peak ranking on ElevenLabs Vietnamese voice category</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">1,000+</div>
+        <div class="metric-label">Organic engagements on a single long-form storytelling article</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I DO -->
+<section>
+  <div class="container">
+    <div class="section-label">What I bring to Blazity</div>
+    <h2>Content creation meets systems thinking</h2>
+    <p class="section-desc">Not just content, and not just automation. Both — working together.</p>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-icon">⚙️</div>
+        <div class="role-title">AI Workflow Design</div>
+        <div class="role-desc">I design the workflow before I write the first word. ChatGPT, Claude, Gemini, NotebookLM — orchestrated into a production system that runs at scale and adapts as the content strategy evolves.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-icon">✍️</div>
+        <div class="role-title">Storytelling for Technical Brands</div>
+        <div class="role-desc">Turning founders' ideas, engineering insights, and technical differentiators into clear, compelling content that earns attention — articles, case studies, social posts, newsletters, and thought leadership.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-icon">📊</div>
+        <div class="role-title">Multi-Channel Social Management</div>
+        <div class="role-desc">Four years managing and growing organic social presence across YouTube, Facebook (4,100+ followers), Instagram, TikTok, and Threads — content calendar to community engagement, end-to-end.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-icon">🎙️</div>
+        <div class="role-title">Audio, Video & Newsletter Production</div>
+        <div class="role-desc">End-to-end production of podcasts, audiobooks, video scripts, and newsletters — including voice AI integration, Audacity post-production, and ACX-compliant audio engineering.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="section-label">Selected work</div>
+    <h2>Case Studies</h2>
+    <p class="section-desc">Real systems, real numbers, real outcomes.</p>
+
+    <!-- CASE 1: Flywheel -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-tag tag-blue">AI WORKFLOW · CONTENT OPERATIONS</div>
+      </div>
+      <h3>Content Production Flywheel™</h3>
+      <p class="case-desc">
+        Designed and deployed an end-to-end AI-assisted content system operating two brands from one shared knowledge hub. The workflow covers research, scripting, production, QA, publishing, and repurposing — with ~70% of the pipeline delegated to AI tools and 30% reserved for human editorial judgment at the moments that matter most.
+      </p>
+
+      <div class="flywheel-wrap">
+        <div class="flywheel-label">// workflow architecture</div>
+        <div class="flywheel-steps">
+          <div class="fw-step"><div class="fw-node">Topic</div><div class="fw-arrow">→</div></div>
+          <div class="fw-step"><div class="fw-node active">Research (Gemini + Perplexity)</div><div class="fw-arrow">→</div></div>
+          <div class="fw-step"><div class="fw-node active">NotebookLM Data Hub</div><div class="fw-arrow">→</div></div>
+          <div class="fw-step"><div class="fw-node active">Script (Claude + ChatGPT)</div><div class="fw-arrow">→</div></div>
+          <div class="fw-step"><div class="fw-node">HITL Review</div><div class="fw-arrow">→</div></div>
+          <div class="fw-step"><div class="fw-node active">Production (Canva + ElevenLabs)</div><div class="fw-arrow">→</div></div>
+          <div class="fw-step"><div class="fw-node">Publish</div><div class="fw-arrow">→</div></div>
+          <div class="fw-step"><div class="fw-node active">Repurpose ↺</div></div>
+        </div>
+        <div class="flywheel-outcome">
+          <div class="outcome-item">13+ assets from 2 source videos</div>
+          <div class="outcome-item">2 brands from 1 knowledge hub</div>
+          <div class="outcome-item">100% brand consistency</div>
+          <div class="outcome-item">60%+ time saved vs. manual</div>
+        </div>
+      </div>
+
+      <div class="case-results">
+        <div class="result-pill"><strong>60%+</strong> production time saved</div>
+        <div class="result-pill"><strong>13+</strong> assets per content cycle</div>
+        <div class="result-pill"><strong>2 brands</strong> from one shared AI data hub</div>
+        <div class="result-pill"><strong>70%</strong> AI-assisted workflow coverage</div>
+      </div>
+      <div class="case-caps">
+        <span class="cap">AI Workflow Design</span>
+        <span class="cap">Content Operations</span>
+        <span class="cap">Multi-brand Management</span>
+        <span class="cap">SOP Development</span>
+        <span class="cap">Knowledge Architecture</span>
+      </div>
+    </div>
+
+    <!-- CASE 2: Voice AI product -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-tag tag-green">AI PRODUCT · ORGANIC GROWTH</div>
+      </div>
+      <h3>Vietnamese Voice AI — From Dataset to #1 Ranking in 56 Days</h3>
+      <p class="case-desc">
+        Built a professional-grade Vietnamese voice clone on ElevenLabs from a 31-minute self-produced dataset. Designed the data engineering pipeline, recording setup (hardware optimized via Gemini), ACX-compliant post-production, and a QA process for Vietnamese tonal accuracy across six tones. The product reached #1 peak ranking in the Vietnamese narration category and scaled to 4,500+ organic users with zero paid acquisition — then was strategically transitioned to a Private IP model.
+      </p>
+
+      <div class="case-results">
+        <div class="result-pill"><strong>#1</strong> peak ranking on ElevenLabs</div>
+        <div class="result-pill"><strong>4,500+</strong> organic users in 56 days</div>
+        <div class="result-pill"><strong>95%</strong> similarity index</div>
+        <div class="result-pill"><strong>31 min</strong> training dataset</div>
+        <div class="result-pill"><strong>0</strong> paid acquisition</div>
+      </div>
+
+      <div class="quote-block">
+        <div class="quote-text">"When an AI platform had no documentation for a specific tonal error in Vietnamese, I designed a systematic manual testing protocol — trial, log, standardize — and built a reusable error-resolution playbook. That's the difference between using AI tools and operating AI systems."</div>
+        <div class="quote-attr">— Moon Phan, on the QA process for ElevenLabs Turbo 2.5</div>
+      </div>
+
+      <div class="case-caps">
+        <span class="cap">Voice AI Production</span>
+        <span class="cap">Data Engineering</span>
+        <span class="cap">Linguistic QA</span>
+        <span class="cap">Organic Product Launch</span>
+        <span class="cap">ACX Compliance</span>
+      </div>
+    </div>
+
+    <!-- CASE 3: Storytelling / Viral content -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-tag tag-amber">STORYTELLING · COMMUNITY GROWTH</div>
+      </div>
+      <h3>Organic Storytelling That Converts — "Studying Abroad at 38"</h3>
+      <p class="case-desc">
+        Wrote and published a long-form personal narrative in a Vietnamese community of 100,000+ members. No paid promotion, no algorithm optimization — pure storytelling, structured around a single authentic insight. The article became the community's highest-performing post historically, and directly converted one reader into a high-value business partner.
+      </p>
+
+      <div class="case-results">
+        <div class="result-pill"><strong>1,000+</strong> organic engagements</div>
+        <div class="result-pill"><strong>300+</strong> shares</div>
+        <div class="result-pill"><strong>500+</strong> comments</div>
+        <div class="result-pill"><strong>30+</strong> inbound DMs</div>
+        <div class="result-pill"><strong>1</strong> high-value partner converted — zero ad spend</div>
+      </div>
+      <div class="case-caps">
+        <span class="cap">Long-form Writing</span>
+        <span class="cap">Community Engagement</span>
+        <span class="cap">Organic Conversion</span>
+        <span class="cap">Founder Storytelling</span>
+      </div>
+    </div>
+
+    <!-- CASE 4: 1st place storytelling -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-tag tag-blue">CONTENT · PUBLIC RECOGNITION</div>
+      </div>
+      <h3>1st Place — AI-Assisted Vision Storytelling &amp; Inspiring Business Storytelling</h3>
+      <p class="case-desc">
+        Designed and produced a full AI-assisted multimedia content piece for a global Vietnamese digital entrepreneur community (300–500 members): concept, script, AI image generation, Canva design, personal voice narration, video production. Won 1st Place in both Vision Post and Inspiring Business Storytelling categories — then was invited to design and deliver a training session teaching the full workflow to 1,000+ community members.
+      </p>
+
+      <div class="case-results">
+        <div class="result-pill">🥇 <strong>1st Place</strong> Vision Post</div>
+        <div class="result-pill">🥇 <strong>1st Place</strong> Inspiring Business Storytelling</div>
+        <div class="result-pill"><strong>1,000+</strong> members trained on workflow</div>
+      </div>
+      <div class="case-caps">
+        <span class="cap">AI-Assisted Content Creation</span>
+        <span class="cap">Creative Direction</span>
+        <span class="cap">Video Production</span>
+        <span class="cap">Knowledge Transfer</span>
+        <span class="cap">Community Training</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="section-label">AI & Content Stack</div>
+    <h2>Tools I operate daily</h2>
+    <p class="section-desc">Fluent in the full stack — not just aware of the tools, but building workflows with them.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-category">AI & LLMs</div>
+        <div class="tool-list">
+          <strong>ChatGPT</strong><br>
+          <strong>Claude</strong><br>
+          <strong>Gemini</strong> (20 custom Gems)<br>
+          <strong>Perplexity</strong>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-category">Knowledge & Research</div>
+        <div class="tool-list">
+          <strong>NotebookLM</strong><br>
+          <strong>Google AI Studio</strong><br>
+          <strong>Google Cloud</strong> (TTS API)<br>
+          <strong>Manus AI</strong>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-category">Content Production</div>
+        <div class="tool-list">
+          <strong>ElevenLabs</strong><br>
+          <strong>Audacity</strong><br>
+          <strong>Canva</strong><br>
+          <strong>CapCut</strong> · <strong>OBS Studio</strong>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-category">Publishing & Web</div>
+        <div class="tool-list">
+          <strong>Wix</strong> (site design + ops)<br>
+          <strong>Gamma AI</strong><br>
+          YouTube · Facebook · IG<br>
+          TikTok · Threads
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-category">Workflow & Ops</div>
+        <div class="tool-list">
+          <strong>SOP Design</strong><br>
+          <strong>No-Code API Integration</strong><br>
+          <strong>Xmind</strong><br>
+          <strong>OneNote</strong> (QA logging)
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-category">Google Ecosystem</div>
+        <div class="tool-list">
+          <strong>Google Drive</strong> / Docs / Sheets<br>
+          <strong>Google Console</strong><br>
+          <strong>Google Cloud</strong><br>
+          Gmail
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK BIO -->
+<section>
+  <div class="container">
+    <div class="section-label">Background</div>
+    <h2>18+ years. Two continents. One system.</h2>
+    <p class="section-desc">The full picture, in brief.</p>
+
+    <div style="max-width:680px;">
+      <p style="color:var(--muted); line-height:1.8; margin-bottom:18px;">
+        I spent the first half of my career in Vietnam — as a communication specialist at XQ Hand Embroidery Art (where the CEO doubled my salary after observing one presentation to a Singapore delegation), as a project coordinator at Sun Group's Bà Nà Hills, and as a national project secretariat member for Vietnam's Ministry of Education English Quality Improvement Project.
+      </p>
+      <p style="color:var(--muted); line-height:1.8; margin-bottom:18px;">
+        I earned my Master's in Hospitality Management (UCAM Spain, delivered entirely in English) with a thesis on Social Media Marketing for tourism businesses. Then I moved to Warsaw, where I've spent the past few years going fully AI-native — designing systems, building products, and figuring out what it actually means to run a content operation with AI in the loop.
+      </p>
+      <p style="color:var(--muted); line-height:1.8;">
+        I'm a native Vietnamese speaker, fluent in English, based in Poland as an EU Permanent Resident. No visa sponsorship required.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; max-width:680px;">
+      <div>
+        <div class="section-label" style="margin-bottom:10px;">Education</div>
+        <p style="font-size:13px; color:var(--text); margin-bottom:4px;"><strong>MSc Hospitality Management</strong></p>
+        <p style="font-size:12px; color:var(--muted);">UCAM, Spain · 2017 · English-medium</p>
+        <p style="font-size:12px; color:var(--muted); margin-top:2px;">Thesis: Social Media Marketing in Tourism</p>
+        <div style="height:14px;"></div>
+        <p style="font-size:13px; color:var(--text); margin-bottom:4px;"><strong>BEd Linguistics & Russian</strong></p>
+        <p style="font-size:12px; color:var(--muted);">Univ. of Foreign Language Studies, Danang · 2001</p>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:10px;">Certifications</div>
+        <p style="font-size:12px; color:var(--muted); line-height:2;">
+          Use AI for Everyday Tasks — <strong style="color:var(--text)">Microsoft</strong> (2025)<br>
+          AI for Everyone — <strong style="color:var(--text)">DeepLearning.AI / Google</strong> (In Progress)<br>
+          Advanced Social Media & Content Operations (2023–Present)<br>
+          YouTube Evergreen Content Production (2025–Present)
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label" style="justify-content:center; display:flex;">Let's talk</div>
+    <h2 style="text-align:center; margin-bottom:16px;">Ready to build Blazity's AI-native marketing function.</h2>
+    <p style="text-align:center; color:var(--muted); margin-bottom:32px; font-size:14px;">Warsaw, Poland · Remote-first · Available immediately</p>
+    <div style="text-align:center;">
+      <a href="mailto:thunguyetphan@gmail.com" class="contact-email">thunguyetphan@gmail.com</a>
+      <div class="contact-meta" style="margin-top:14px;">
+        +48 889 251 696 &nbsp;·&nbsp; linkedin.com/in/moonphan &nbsp;·&nbsp; moon-phan-ygo8exa.gamma.site
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
