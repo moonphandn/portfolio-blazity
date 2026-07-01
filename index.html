@@ -176,7 +176,28 @@
 
   .divider { height: 1px; background: var(--border); margin: 48px 0; }
 
+  /* ── SCREENSHOTS ── */
+  .screenshot-wrap {
+    margin: 24px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .screenshot-label {
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+    padding: 8px 14px; border-bottom: 1px solid var(--border);
+    letter-spacing: .06em;
+  }
+  .screenshot-wrap img {
+    width: 100%; display: block;
+  }
+  .screenshots-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+  .screenshots-row .screenshot-wrap { margin: 0; }
+
   @media (max-width: 680px) {
+    .screenshots-row { grid-template-columns: 1fr; }
+  }
     .metrics-grid { grid-template-columns: repeat(2,1fr); }
     .tools-grid { grid-template-columns: 1fr 1fr; }
     .role-grid { grid-template-columns: 1fr; }
@@ -212,7 +233,7 @@
       I design AI-native content workflows that run at scale — turning one idea into a multi-channel content operation with 60%+ less production time. Then I write the stories that make people stop, read, and act.
     </p>
     <div class="hero-meta">
-      <span>Moon Phan</span> &nbsp;·&nbsp; thunguyetphan@gmail.com &nbsp;·&nbsp; <span>linkedin.com/in/moonphan</span> &nbsp;·&nbsp; <span>https://moonphandn.github.io/portfolio-blazity/</span>
+      <span>Moon Phan</span> &nbsp;·&nbsp; thunguyetphan@gmail.com &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/moonphan" target="_blank" style="color:var(--accent2);text-decoration:none;">linkedin.com/in/moonphan</a> &nbsp;·&nbsp; <a href="https://moon-phan-ygo8exa.gamma.site" target="_blank" style="color:var(--accent2);text-decoration:none;">moon-phan-ygo8exa.gamma.site</a>
     </div>
   </div>
 </section>
@@ -236,7 +257,7 @@
       </div>
       <div class="metric-card">
         <div class="metric-value">1,000+</div>
-        <div class="metric-label">Organic engagements on a single long-form storytelling article</div>
+        <div class="metric-label">Organic engagements on a single short-form storytelling article</div>
       </div>
     </div>
   </div>
@@ -290,6 +311,11 @@
         Designed and deployed an end-to-end AI-assisted content system operating two brands from one shared knowledge hub. The workflow covers research, scripting, production, QA, publishing, and repurposing — with ~70% of the pipeline delegated to AI tools and 30% reserved for human editorial judgment at the moments that matter most.
       </p>
 
+      <div class="screenshot-wrap">
+        <div class="screenshot-label">// content production flywheel™ — full system architecture</div>
+        <img src="flywheel.png" alt="Moon Phan Content Production Flywheel™ — AI-powered content system">
+      </div>
+
       <div class="flywheel-wrap">
         <div class="flywheel-label">// workflow architecture</div>
         <div class="flywheel-steps">
@@ -304,7 +330,7 @@
         </div>
         <div class="flywheel-outcome">
           <div class="outcome-item">13+ assets from 2 source videos</div>
-          <div class="outcome-item">2 brands from 1 knowledge hub</div>
+          <div class="outcome-item">2+ brands from 1 knowledge hub</div>
           <div class="outcome-item">100% brand consistency</div>
           <div class="outcome-item">60%+ time saved vs. manual</div>
         </div>
@@ -313,7 +339,7 @@
       <div class="case-results">
         <div class="result-pill"><strong>60%+</strong> production time saved</div>
         <div class="result-pill"><strong>13+</strong> assets per content cycle</div>
-        <div class="result-pill"><strong>2 brands</strong> from one shared AI data hub</div>
+        <div class="result-pill"><strong>2+ brands</strong> from one shared AI data hub</div>
         <div class="result-pill"><strong>70%</strong> AI-assisted workflow coverage</div>
       </div>
       <div class="case-caps">
@@ -343,6 +369,17 @@
         <div class="result-pill"><strong>0</strong> paid acquisition</div>
       </div>
 
+      <div class="screenshots-row">
+        <div class="screenshot-wrap">
+          <div class="screenshot-label">// elevenlabs dashboard — 4.5K organic users</div>
+          <img src="elevenlabs-users.png" alt="ElevenLabs — Moon Phan Pro Narration 4.5K users">
+        </div>
+        <div class="screenshot-wrap">
+          <div class="screenshot-label">// elevenlabs explore — #1 trending vietnamese</div>
+          <img src="elevenlabs-ranking.png" alt="ElevenLabs — Moon Phan #1 Vietnamese ranking">
+        </div>
+      </div>
+
       <div class="quote-block">
         <div class="quote-text">"When an AI platform had no documentation for a specific tonal error in Vietnamese, I designed a systematic manual testing protocol — trial, log, standardize — and built a reusable error-resolution playbook. That's the difference between using AI tools and operating AI systems."</div>
         <div class="quote-attr">— Moon Phan, on the QA process for ElevenLabs Turbo 2.5</div>
@@ -364,7 +401,7 @@
       </div>
       <h3>Organic Storytelling That Converts — "Studying Abroad at 38"</h3>
       <p class="case-desc">
-        Wrote and published a long-form personal narrative in a Vietnamese community of 100,000+ members. No paid promotion, no algorithm optimization — pure storytelling, structured around a single authentic insight. The article became the community's highest-performing post historically, and directly converted one reader into a high-value business partner.
+        Wrote and published a short-form personal narrative in a Vietnamese community of 100,000+ members. No paid promotion, no algorithm optimization — pure storytelling, structured around a single authentic insight. The article became the community's highest-performing post historically, and directly converted one reader into a high-value business partner.
       </p>
 
       <div class="case-results">
@@ -375,7 +412,7 @@
         <div class="result-pill"><strong>1</strong> high-value partner converted — zero ad spend</div>
       </div>
       <div class="case-caps">
-        <span class="cap">Medium-form Writing</span>
+        <span class="cap">Short-form Writing</span>
         <span class="cap">Community Engagement</span>
         <span class="cap">Organic Conversion</span>
         <span class="cap">Founder Storytelling</span>
@@ -389,11 +426,11 @@
       </div>
       <h3>1st Place — AI-Assisted Vision Storytelling &amp; Inspiring Business Storytelling</h3>
       <p class="case-desc">
-        Designed and produced a full AI-assisted multimedia content piece for a global Vietnamese digital entrepreneur community (300–500 members): concept, script, AI image generation, Canva design, personal voice narration, video production. Won 1st Place in both Vision Post and Inspiring Business Storytelling categories — then was invited to design and deliver a training session teaching the full workflow to 1,000+ community members.
+        Designed and produced a full AI-assisted multimedia content piece for a global Vietnamese digital entrepreneur community (300–500 members): concept, script, AI image generation, Canva design, personal voice narration, video production. Won 1st Place in both Vision Board and Inspiring Business Storytelling categories — then was invited to design and deliver a training session teaching the full workflow to 1,000+ community members.
       </p>
 
       <div class="case-results">
-        <div class="result-pill">🥇 <strong>1st Place</strong> Vision Post</div>
+        <div class="result-pill">🥇 <strong>1st Place</strong> Vision Board</div>
         <div class="result-pill">🥇 <strong>1st Place</strong> Inspiring Business Storytelling</div>
         <div class="result-pill"><strong>1,000+</strong> members trained on workflow</div>
       </div>
@@ -414,7 +451,7 @@
   <div class="container">
     <div class="section-label">AI & Content Stack</div>
     <h2>Tools I operate daily</h2>
-    <p class="section-desc">Fluent in the full stack — not just aware of the tools, but building workflows with them.</p>
+    <p class="section-desc">Professional with the full stack — not just aware of the tools, but building workflows with them.</p>
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-category">AI & LLMs</div>
@@ -489,7 +526,7 @@
         I earned my Master's in Hospitality Management (UCAM Spain, delivered entirely in English) with a thesis on Social Media Marketing for tourism businesses. Then I moved to Warsaw, where I've spent the past few years going fully AI-native — designing systems, building products, and figuring out what it actually means to run a content operation with AI in the loop.
       </p>
       <p style="color:var(--muted); line-height:1.8;">
-        I'm a native Vietnamese speaker, fluent in English, based in Poland as an EU Permanent Resident. No visa sponsorship required.
+        I'm a native Vietnamese speaker, professional working proficiency in English, based in Poland as an EU Permanent Resident. No visa sponsorship required.
       </p>
     </div>
 
@@ -498,7 +535,7 @@
     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; max-width:680px;">
       <div>
         <div class="section-label" style="margin-bottom:10px;">Education</div>
-        <p style="font-size:13px; color:var(--text); margin-bottom:4px;"><strong>MSc Hospitality Management</strong></p>
+        <p style="font-size:13px; color:var(--text); margin-bottom:4px;"><strong>Master's in Hospitality Management</strong></p>
         <p style="font-size:12px; color:var(--muted);">UCAM, Spain · 2017 · English-medium</p>
         <p style="font-size:12px; color:var(--muted); margin-top:2px;">Thesis: Social Media Marketing in Tourism</p>
         <div style="height:14px;"></div>
@@ -527,7 +564,7 @@
     <div style="text-align:center;">
       <a href="mailto:thunguyetphan@gmail.com" class="contact-email">thunguyetphan@gmail.com</a>
       <div class="contact-meta" style="margin-top:14px;">
-        +48 889 251 696 &nbsp;·&nbsp; linkedin.com/in/moonphan &nbsp;·&nbsp; https://moonphandn.github.io/portfolio-blazity/
+        +48 889 251 696 &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/moonphan" target="_blank" style="color:var(--accent2);text-decoration:none;">linkedin.com/in/moonphan</a> &nbsp;·&nbsp; <a href="https://moon-phan-ygo8exa.gamma.site" target="_blank" style="color:var(--accent2);text-decoration:none;">moon-phan-ygo8exa.gamma.site</a>
       </div>
     </div>
   </div>
